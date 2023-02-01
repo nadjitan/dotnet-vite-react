@@ -1,14 +1,13 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { FC, useState } from "react"
+import reactLogo from "./assets/react.svg"
+import "./App.css"
 
-function App() {
+export const App: FC = () => {
   const [count, setCount] = useState(0)
-  const [backednResult , setResult] = useState('Please click button...')
+  const [backednResult, setResult] = useState("Please click button...")
 
-  
   const fetchWeatherForecast = () => {
-    fetch('/WeatherForecast')
+    fetch("/WeatherForecast")
       .then(resp => resp.json())
       .then(json => {
         setResult(JSON.stringify(json))
@@ -17,7 +16,7 @@ function App() {
   }
 
   const fetchMessage = () => {
-    fetch('/WeatherForecast/Message')
+    fetch("/WeatherForecast/Message")
       .then(resp => resp.text())
       .then(msg => setResult(msg))
   }
@@ -38,16 +37,14 @@ function App() {
           <button onClick={() => fetchMessage()}>
             Fetch Message from backend
           </button>
-          <button onClick={() => setCount((count) => count + 1)}>
+          <button onClick={() => setCount(count => count + 1)}>
             count is {count}
           </button>
           <button onClick={() => fetchWeatherForecast()}>
             Fetch Weather Forecast from backend
           </button>
         </div>
-        <code>
-          {backednResult}
-        </code>
+        <code>{backednResult}</code>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
@@ -58,5 +55,3 @@ function App() {
     </div>
   )
 }
-
-export default App
