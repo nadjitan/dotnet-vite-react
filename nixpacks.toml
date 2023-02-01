@@ -2,4 +2,4 @@
 nixPkgs = ["...", "nodejs", "nodePackages.typescript"]
 
 [phases.build]
-cmds = ["npm install", "..."]
+cmds = ["cd /app/ClientApp/ && npm install", "..."]
